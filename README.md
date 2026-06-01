@@ -10,7 +10,14 @@ Base style: **new-york** (classic shadcn look) + the `@openteams/theme` tokens.
 
 1. Make sure your app is a shadcn project (`npx shadcn@latest init` if not).
 
-2. Register the namespace once in your app's `components.json`:
+2. Register the namespace once (writes the mapping into your app's
+   `components.json`):
+
+   ```bash
+   npx shadcn@latest registry add @openteams=https://mikemazara.github.io/openteams-shadcn/r/{name}.json
+   ```
+
+   This adds the following to `components.json` (you can also edit it by hand):
 
    ```json
    {
@@ -33,6 +40,9 @@ Base style: **new-york** (classic shadcn look) + the `@openteams/theme` tokens.
 Available items: `theme`, `utils`, `button`, `badge`, `card`, `input`, `label`,
 `separator`, `textarea`, `skeleton`.
 
+The published GitHub Pages site serves **Storybook at `/`** (component preview)
+and the **registry JSON at `/r/<name>.json`** (what the CLI fetches).
+
 ## For maintainers (this repo)
 
 ```
@@ -40,22 +50,29 @@ registry/openteams/         # the source you own and edit
   lib/utils.ts              # cn()
   ui/*.tsx                  # components
 registry.json               # manifest: items, deps, theme tokens
-public/r/*.json             # GENERATED — what the CLI fetches
+stories/*.stories.tsx       # Storybook previews
+.storybook/                 # Storybook config + theme CSS
+public/                     # GENERATED site: Storybook at /, registry at /r
 ```
 
-Workflow:
+Setup (first time): `bun install`.
+
+Common commands:
+
+```bash
+bun storybook         # local Storybook dev server (http://localhost:6006)
+bun registry:build    # build registry JSON only -> public/r
+bun storybook:build   # build Storybook only -> public
+bun site:build        # build both (Storybook + registry) -> public   (CI uses this)
+```
+
+Workflow to add/change a component:
 
 1. Edit or add a component under `registry/openteams/ui/`.
 2. Add/adjust its entry in `registry.json` (name, deps, registryDependencies,
    files).
-3. Rebuild the static JSON:
-
-   ```bash
-   npm install        # first time only
-   npm run registry:build
-   ```
-
-4. Publish `public/r/` to your static host (e.g. GitHub Pages from this repo).
+3. Optionally add a story under `stories/`.
+4. `bun site:build`, then push — the GitHub Actions workflow redeploys Pages.
 
 ### Restyling for the team
 
