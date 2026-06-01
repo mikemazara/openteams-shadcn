@@ -14,6 +14,18 @@ const config: StorybookConfig = {
       ...(cfg.resolve.alias ?? {}),
       "@": fileURLToPath(new URL("../registry/openteams", import.meta.url)),
     }
+    // Vite 8 (Rolldown) dev optimizer must pre-bundle React's CJS entry so the
+    // `default` export interop is synthesized — otherwise the dev server throws
+    // "react ... does not provide an export named 'default'".
+    cfg.optimizeDeps = cfg.optimizeDeps ?? {}
+    cfg.optimizeDeps.include = [
+      ...(cfg.optimizeDeps.include ?? []),
+      "react",
+      "react-dom",
+      "react-dom/client",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+    ]
     return cfg
   },
 }
