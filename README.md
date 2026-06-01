@@ -51,11 +51,24 @@ Workflow:
 3. Rebuild the static JSON:
 
    ```bash
-   npm install        # first time only
-   npm run registry:build
+   bun install        # first time only
+   bun run registry:build
    ```
 
 4. Publish `public/r/` to your static host (e.g. GitHub Pages from this repo).
+
+### Linting & formatting
+
+Rules follow [shadcn-ui v4](https://github.com/shadcn-ui/ui) registry style (Prettier +
+TypeScript ESLint + Unicorn with shadcn-safe overrides). Run before you commit or
+open a PR:
+
+```bash
+bun run lint          # check
+bun run lint:fix      # auto-fix
+bun run format:check  # check
+bun run format:write  # auto-fix
+```
 
 ### Restyling for the team
 
