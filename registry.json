@@ -1,0 +1,158 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "openteams",
+  "homepage": "https://openteams-ai.github.io/components",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "cn() utility",
+      "description": "Class name merge helper used by every component.",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/openteams/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "theme",
+      "type": "registry:theme",
+      "title": "OpenTeams theme",
+      "description": "Brand color tokens and radius. Edit here to restyle every component at once.",
+      "cssVars": {
+        "theme": {
+          "radius": "0.625rem"
+        },
+        "light": {
+          "background": "oklch(1 0 0)",
+          "foreground": "oklch(0% 0 0)",
+          "card": "oklch(1 0 0)",
+          "card-foreground": "oklch(0% 0 0)",
+          "popover": "oklch(1 0 0)",
+          "popover-foreground": "oklch(0% 0 0)",
+          "primary": "oklch(0% 0 0)",
+          "primary-foreground": "oklch(0.985 0 0)",
+          "secondary": "oklch(0.97 0 0)",
+          "secondary-foreground": "oklch(0.205 0 0)",
+          "muted": "oklch(0.97 0 0)",
+          "muted-foreground": "oklch(0.556 0 0)",
+          "accent": "oklch(0.97 0 0)",
+          "accent-foreground": "oklch(0.205 0 0)",
+          "destructive": "oklch(0.577 0.245 27.325)",
+          "destructive-foreground": "oklch(0.97 0.01 17)",
+          "border": "oklch(0.922 0 0)",
+          "input": "oklch(0.922 0 0)",
+          "ring": "oklch(0.708 0 0)"
+        },
+        "dark": {
+          "background": "oklch(0.145 0 0)",
+          "foreground": "oklch(0.985 0 0)",
+          "card": "oklch(0.205 0 0)",
+          "card-foreground": "oklch(0.985 0 0)",
+          "popover": "oklch(0.205 0 0)",
+          "popover-foreground": "oklch(0.985 0 0)",
+          "primary": "oklch(0.922 0 0)",
+          "primary-foreground": "oklch(0.205 0 0)",
+          "secondary": "oklch(0.269 0 0)",
+          "secondary-foreground": "oklch(0.985 0 0)",
+          "muted": "oklch(0.269 0 0)",
+          "muted-foreground": "oklch(0.708 0 0)",
+          "accent": "oklch(0.371 0 0)",
+          "accent-foreground": "oklch(0.985 0 0)",
+          "destructive": "oklch(0.704 0.191 22.216)",
+          "destructive-foreground": "oklch(0.58 0.22 27)",
+          "border": "oklch(1 0 0 / 10%)",
+          "input": "oklch(1 0 0 / 15%)",
+          "ring": "oklch(0.556 0 0)"
+        }
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Button with variants and sizes.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/button.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Small status / label badge.",
+      "dependencies": ["class-variance-authority", "radix-ui"],
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/badge.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Container with header, content and footer slots.",
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/card.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text input field.",
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/input.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Accessible form label.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/label.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Horizontal or vertical divider.",
+      "dependencies": ["radix-ui"],
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/separator.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input.",
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/textarea.tsx", "type": "registry:ui" }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Loading placeholder.",
+      "registryDependencies": ["@openteams/utils"],
+      "files": [
+        { "path": "registry/openteams/ui/skeleton.tsx", "type": "registry:ui" }
+      ]
+    }
+  ]
+}

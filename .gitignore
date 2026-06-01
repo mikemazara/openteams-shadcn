@@ -1,0 +1,6 @@
+node_modules
+.DS_Store
+*.log
+
+# Generated registry output — built in CI before deploy
+/public/r

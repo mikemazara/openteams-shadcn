@@ -1,0 +1,15 @@
+{
+  "name": "@openteams/registry",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OpenTeams component registry — install with: npx shadcn add @openteams/<name>",
+  "type": "module",
+  "packageManager": "bun@1.2.0",
+  "scripts": {
+    "build": "shadcn build --output public/r",
+    "registry:build": "shadcn build --output public/r"
+  },
+  "devDependencies": {
+    "shadcn": "^4.10.0"
+  }
+}
