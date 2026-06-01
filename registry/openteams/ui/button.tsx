@@ -1,9 +1,9 @@
 import * as React from "react"
+import { Spinner } from "@/ui/spinner"
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 
 import { cn } from "@/lib/utils"
-import { Spinner } from "@/ui/spinner"
 
 const buttonVariants = cva(
   "inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-colors outline-none disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
@@ -14,18 +14,18 @@ const buttonVariants = cva(
           "bg-primary text-primary-foreground",
           "hover:bg-[#682888] hover:underline hover:underline-offset-4",
           "active:bg-[#682888] active:no-underline",
-          "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+          "focus-visible:ring-primary focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2",
           "disabled:bg-muted disabled:text-muted-foreground/40 disabled:no-underline",
           "data-[loading=true]:bg-muted data-[loading=true]:text-muted-foreground data-[loading=true]:no-underline",
         ].join(" "),
         destructive:
           "bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40 text-white focus-visible:ring-2 disabled:opacity-50",
         outline:
-          "bg-background hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 border shadow-xs focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50",
+          "bg-background hover:bg-accent hover:text-accent-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50 focus-visible:ring-ring border shadow-xs focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50",
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50",
+          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50 focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50",
         link: "text-primary underline-offset-4 hover:underline disabled:opacity-50",
       },
       size: {
@@ -79,7 +79,10 @@ function Button({
       {...props}
     >
       {loading && (
-        <Spinner aria-hidden className={iconOnly ? undefined : "not-only:-ml-0.5"} />
+        <Spinner
+          aria-hidden
+          className={iconOnly ? undefined : "not-only:-ml-0.5"}
+        />
       )}
       {loading && iconOnly ? null : children}
     </Comp>
