@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "openteams",
-  "homepage": "https://openteams-ai.github.io/components",
+  "homepage": "https://mikemazara.github.io/openteams-shadcn",
   "items": [
     {
       "name": "utils",

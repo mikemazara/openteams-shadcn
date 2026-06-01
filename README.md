@@ -15,7 +15,7 @@ Base style: **new-york** (classic shadcn look) + the `@openteams/theme` tokens.
    ```json
    {
      "registries": {
-       "@openteams": "https://openteams-ai.github.io/components/r/{name}.json"
+       "@openteams": "https://mikemazara.github.io/openteams-shadcn/r/{name}.json"
      }
    }
    ```
