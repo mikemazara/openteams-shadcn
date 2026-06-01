@@ -1,8 +1,8 @@
-name: Deploy registry to GitHub Pages
+name: CI / Deploy registry to GitHub Pages
 
 on:
   push:
-    branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -10,13 +10,14 @@ permissions:
   pages: write
   id-token: write
 
-# Allow one concurrent deployment; cancel in-progress runs for the same ref.
+# One in-progress run per ref; a newer push to the same ref cancels the older.
 concurrency:
-  group: pages
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build:
+  # Runs on every push / PR: strict checks (lint, format, typecheck).
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -28,11 +29,22 @@ jobs:
       - name: Install dependencies
         run: bun install --frozen-lockfile
 
-      - name: Lint
-        run: bun run lint
+      - name: Checks (lint, format, typecheck — strict)
+        run: bun run ci
 
-      - name: Check formatting
-        run: bun run format:check
+  # Runs on every push / PR: build the site and upload the Pages artifact.
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
       - name: Build site (Storybook at /, registry JSON at /r)
         run: bun site:build
@@ -42,11 +54,14 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           # public/ = Storybook static site; public/r/*.json = registry items
           path: public
 
+  # Only on main: publish the artifact uploaded by `build` (no rebuild).
   deploy:
     needs: build
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -55,3 +70,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages

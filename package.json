@@ -14,7 +14,10 @@
     "lint": "eslint . --cache --cache-location .eslintcache",
     "lint:fix": "eslint --fix . --cache --cache-location .eslintcache",
     "format:check": "prettier --check \"registry/**/*.{ts,tsx,json,md}\"",
-    "format:write": "prettier --write \"registry/**/*.{ts,tsx,json,md}\""
+    "format:write": "prettier --write \"registry/**/*.{ts,tsx,json,md}\"",
+    "typecheck": "tsc --noEmit",
+    "check": "bun run format:write && bun run lint:fix && bun run typecheck",
+    "ci": "bun run lint && bun run format:check && bun run typecheck"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",

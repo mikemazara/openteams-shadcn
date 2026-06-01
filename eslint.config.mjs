@@ -13,6 +13,7 @@ export default tseslint.config(
       "public/**",
       ".storybook/**",
       "stories/**",
+      "test/**",
       "bun.lock",
       "eslint.config.mjs",
       "prettier.config.cjs",
