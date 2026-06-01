@@ -11,6 +11,8 @@ export default tseslint.config(
     ignores: [
       "node_modules/**",
       "public/**",
+      ".storybook/**",
+      "stories/**",
       "bun.lock",
       "eslint.config.mjs",
       "prettier.config.cjs",

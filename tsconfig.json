@@ -6,12 +6,14 @@
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "strict": true,
-    "noEmit": true,
+    "esModuleInterop": true,
     "skipLibCheck": true,
+    "noEmit": true,
+    "types": ["react", "react-dom"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["registry/openteams/*"]
     }
   },
-  "include": ["registry/**/*.ts", "registry/**/*.tsx"]
+  "include": ["registry", "stories", ".storybook"]
 }
