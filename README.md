@@ -72,7 +72,21 @@ Workflow to add/change a component:
 2. Add/adjust its entry in `registry.json` (name, deps, registryDependencies,
    files).
 3. Optionally add a story under `stories/`.
-4. `bun site:build`, then push — the GitHub Actions workflow redeploys Pages.
+4. Run lint/format, then `bun site:build`, and push — GitHub Actions redeploys
+   Pages.
+
+### Linting & formatting
+
+Rules follow [shadcn-ui v4](https://github.com/shadcn-ui/ui) registry style (Prettier +
+TypeScript ESLint + Unicorn with shadcn-safe overrides). Run before you commit or
+open a PR:
+
+```bash
+bun run lint          # check
+bun run lint:fix      # auto-fix
+bun run format:check  # check
+bun run format:write  # auto-fix
+```
 
 ### Restyling for the team
 

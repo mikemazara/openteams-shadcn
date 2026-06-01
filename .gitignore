@@ -1,4 +1,8 @@
 node_modules
+.eslintcache
+
+# Lockfiles — Bun resolves from package.json; not committed
+package-lock.json
 .DS_Store
 *.log
 
